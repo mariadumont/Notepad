@@ -26,7 +26,73 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
+        btnSave = new javax.swing.JButton();
+        btnOpen = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        Menu = new javax.swing.JMenu();
+        New = new javax.swing.JMenuItem();
+        OpenFile = new javax.swing.JMenuItem();
+        Save = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        Exit = new javax.swing.JMenuItem();
+        MenuEdit = new javax.swing.JMenu();
+        MenuAbout = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jToolBar1.setRollover(true);
+
+        btnSave.setText("Save");
+        btnSave.setFocusable(false);
+        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnSave);
+
+        btnOpen.setText("Open");
+        btnOpen.setFocusable(false);
+        btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnOpen);
+
+        getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, java.awt.BorderLayout.PAGE_END);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        Menu.setText("File");
+
+        New.setText("New");
+        Menu.add(New);
+
+        OpenFile.setText("Open File...");
+        Menu.add(OpenFile);
+
+        Save.setText("Save");
+        Menu.add(Save);
+        Menu.add(jSeparator1);
+
+        Exit.setText("Exit");
+        Menu.add(Exit);
+
+        jMenuBar1.add(Menu);
+
+        MenuEdit.setText("Edit");
+        jMenuBar1.add(MenuEdit);
+
+        MenuAbout.setText("About");
+        jMenuBar1.add(MenuAbout);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -67,5 +133,20 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Exit;
+    private javax.swing.JMenu Menu;
+    private javax.swing.JMenu MenuAbout;
+    private javax.swing.JMenu MenuEdit;
+    private javax.swing.JMenuItem New;
+    private javax.swing.JMenuItem OpenFile;
+    private javax.swing.JMenuItem Save;
+    private javax.swing.JButton btnOpen;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
