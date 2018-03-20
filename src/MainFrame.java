@@ -208,10 +208,10 @@ public class MainFrame extends javax.swing.JFrame {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             File fichero = fileChooser.getSelectedFile();
 
-            FileWriter fileSave = null;
+            FileWriter output = null;
             try {
-                fileSave = new FileWriter(fichero);
-                fileSave.write(TextArea.getText());
+                output = new FileWriter(fichero);
+                output.write(TextArea.getText());
                 
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
@@ -219,9 +219,9 @@ public class MainFrame extends javax.swing.JFrame {
                 ex.printStackTrace();
 
             }finally{
-                if(fileSave!=null){
+                if(output!=null){
                     try {
-                        fileSave.close();
+                        output.close();
                     } catch (IOException ex) {
                         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
                     }
