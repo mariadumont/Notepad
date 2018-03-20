@@ -1,9 +1,14 @@
+
+import java.io.*;
+import java.util.*;
+import java.util.logging.*;
+import javax.swing.*;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author alu20482156n
@@ -46,6 +51,7 @@ public class MainFrame extends javax.swing.JFrame {
         Exit = new javax.swing.JMenuItem();
         MenuEdit = new javax.swing.JMenu();
         MenuAbout = new javax.swing.JMenu();
+        About = new javax.swing.JMenuItem();
 
         jLabel4.setText("This program is an exercice for the Programming Subject.");
 
@@ -142,6 +148,10 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(MenuEdit);
 
         MenuAbout.setText("About");
+
+        About.setText("About");
+        MenuAbout.add(About);
+
         jMenuBar1.add(MenuAbout);
 
         setJMenuBar(jMenuBar1);
@@ -150,8 +160,36 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenFileActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showOpenDialog(TextArea);
+        BufferedReader input = null;
 
-                
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fileChooser.getSelectedFile();
+
+            // open and read the file
+            try {
+
+                input = new BufferedReader(new FileReader(fichero));
+
+                String line;
+                StringBuilder contenidoFichero = new StringBuilder();
+
+                while ((line = input.readLine()) != null) {
+                    contenidoFichero.append(line);
+                }
+
+                // Pone el contenido del fichero en el area de texto
+                TextArea.setText(contenidoFichero.toString());
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
     }//GEN-LAST:event_OpenFileActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -194,6 +232,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem About;
     private javax.swing.JMenuItem Exit;
     private javax.swing.JMenu Menu;
     private javax.swing.JMenu MenuAbout;
