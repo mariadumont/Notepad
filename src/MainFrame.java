@@ -136,6 +136,11 @@ public class MainFrame extends javax.swing.JFrame {
         Menu.add(OpenFile);
 
         Save.setText("Save");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
         Menu.add(Save);
         Menu.add(jSeparator1);
 
@@ -183,9 +188,9 @@ public class MainFrame extends javax.swing.JFrame {
                 TextArea.setText(contenidoFichero.toString());
 
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             } catch (IOException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
 
         }
@@ -195,6 +200,37 @@ public class MainFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(TextArea);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fileChooser.getSelectedFile();
+
+            FileWriter fileSave = null;
+            try {
+                fileSave = new FileWriter(fichero);
+                fileSave.write(TextArea.getText());
+                
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+
+            }finally{
+                if(fileSave!=null){
+                    try {
+                        fileSave.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+        }
+
+    }//GEN-LAST:event_SaveActionPerformed
 
     /**
      * @param args the command line arguments
