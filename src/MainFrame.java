@@ -31,11 +31,6 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
@@ -52,48 +47,6 @@ public class MainFrame extends javax.swing.JFrame {
         MenuEdit = new javax.swing.JMenu();
         MenuAbout = new javax.swing.JMenu();
         About = new javax.swing.JMenuItem();
-
-        jLabel4.setText("This program is an exercice for the Programming Subject.");
-
-        jLabel5.setText("IES El Caminas.");
-
-        jButton1.setText("Ok");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jDialog1Layout.createSequentialGroup()
-                            .addGap(68, 68, 68)
-                            .addComponent(jLabel4))
-                        .addGroup(jDialog1Layout.createSequentialGroup()
-                            .addGap(213, 213, 213)
-                            .addComponent(jLabel5))))
-                .addContainerGap(68, Short.MAX_VALUE))
-            .addComponent(jSeparator2)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,6 +108,11 @@ public class MainFrame extends javax.swing.JFrame {
         MenuAbout.setText("About");
 
         About.setText("About");
+        About.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AboutActionPerformed(evt);
+            }
+        });
         MenuAbout.add(About);
 
         jMenuBar1.add(MenuAbout);
@@ -197,10 +155,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_OpenFileActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
 
         JFileChooser fileChooser = new JFileChooser();
@@ -212,14 +166,14 @@ public class MainFrame extends javax.swing.JFrame {
             try {
                 output = new FileWriter(fichero);
                 output.write(TextArea.getText());
-                
+
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
             } catch (IOException ex) {
                 ex.printStackTrace();
 
-            }finally{
-                if(output!=null){
+            } finally {
+                if (output != null) {
                     try {
                         output.close();
                     } catch (IOException ex) {
@@ -231,6 +185,12 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_SaveActionPerformed
+
+    private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
+
+        DialogAbout dialog = new DialogAbout(this, rootPaneCheckingEnabled);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_AboutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,15 +239,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea TextArea;
     private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
