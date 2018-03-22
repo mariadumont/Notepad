@@ -56,12 +56,22 @@ public class MainFrame extends javax.swing.JFrame {
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnSave);
 
         btnOpen.setText("Open");
         btnOpen.setFocusable(false);
         btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnOpen);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
@@ -209,6 +219,67 @@ public class MainFrame extends javax.swing.JFrame {
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         dispose();
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(TextArea);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fileChooser.getSelectedFile();
+
+            FileWriter output = null;
+            try {
+                output = new FileWriter(fichero);
+                output.write(TextArea.getText());
+
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+
+            } finally {
+                if (output != null) {
+                    try {
+                        output.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
+         JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showOpenDialog(TextArea);
+        BufferedReader input = null;
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fileChooser.getSelectedFile();
+
+            // open and read the file
+            try {
+
+                input = new BufferedReader(new FileReader(fichero));
+
+                String line;
+                StringBuilder contenidoFichero = new StringBuilder();
+
+                while ((line = input.readLine()) != null) {
+                    contenidoFichero.append(line);
+                }
+
+                // Pone el contenido del fichero en el area de texto
+                TextArea.setText(contenidoFichero.toString());
+
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+    }//GEN-LAST:event_btnOpenActionPerformed
 
     /**
      * @param args the command line arguments
