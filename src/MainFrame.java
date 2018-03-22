@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 import javax.swing.*;
+import javax.swing.ImageIcon; 
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -45,6 +46,8 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         Exit = new javax.swing.JMenuItem();
         MenuEdit = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         MenuAbout = new javax.swing.JMenu();
         About = new javax.swing.JMenuItem();
 
@@ -87,6 +90,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         Menu.setText("File");
 
+        New.setIcon(new javax.swing.ImageIcon(getClass().getResource("/New24.gif"))); // NOI18N
         New.setText("New");
         New.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +99,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         Menu.add(New);
 
+        OpenFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Open24.gif"))); // NOI18N
         OpenFile.setText("Open File...");
         OpenFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +108,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         Menu.add(OpenFile);
 
+        Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save24.gif"))); // NOI18N
         Save.setText("Save");
         Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,10 +129,20 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(Menu);
 
         MenuEdit.setText("Edit");
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Undo24.gif"))); // NOI18N
+        jMenuItem1.setText("Undo");
+        MenuEdit.add(jMenuItem1);
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Redo24.gif"))); // NOI18N
+        jMenuItem2.setText("Redo");
+        MenuEdit.add(jMenuItem2);
+
         jMenuBar1.add(MenuEdit);
 
         MenuAbout.setText("About");
 
+        About.setIcon(new javax.swing.ImageIcon(getClass().getResource("/About24.gif"))); // NOI18N
         About.setText("About");
         About.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,6 +346,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
