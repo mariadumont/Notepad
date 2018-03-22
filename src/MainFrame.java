@@ -78,6 +78,11 @@ public class MainFrame extends javax.swing.JFrame {
         Menu.setText("File");
 
         New.setText("New");
+        New.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewActionPerformed(evt);
+            }
+        });
         Menu.add(New);
 
         OpenFile.setText("Open File...");
@@ -98,6 +103,11 @@ public class MainFrame extends javax.swing.JFrame {
         Menu.add(jSeparator1);
 
         Exit.setText("Exit");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
         Menu.add(Exit);
 
         jMenuBar1.add(Menu);
@@ -191,6 +201,14 @@ public class MainFrame extends javax.swing.JFrame {
         DialogAbout dialog = new DialogAbout(this, rootPaneCheckingEnabled);
         dialog.setVisible(true);
     }//GEN-LAST:event_AboutActionPerformed
+
+    private void NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewActionPerformed
+        TextArea.setText("");
+    }//GEN-LAST:event_NewActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        dispose();
+    }//GEN-LAST:event_ExitActionPerformed
 
     /**
      * @param args the command line arguments
